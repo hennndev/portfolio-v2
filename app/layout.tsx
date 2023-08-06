@@ -1,7 +1,8 @@
-import './globals.css'
+import '@/app/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Navbar from './components/navbar'
+import Navbar from '@/app/components/ui/navbar'
+import ThemeProviders from "@/app/components/themeProviders"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,12 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true} className={inter.className}>
-        <main className="w-[700px] px-3 py-5 md:px-5 min-h-screen">
-          <Navbar/>
-          {children}
-        </main>
-      </body>
+        <body suppressHydrationWarning={true} className={`${inter.className} dark:bg-gray-700`}>
+          <ThemeProviders attribute='class'>
+            <main className="w-[700px] px-3 py-5 md:px-5 min-h-screen">
+              <Navbar/>
+              {children}
+            </main>
+          </ThemeProviders>
+        </body>
     </html>
   )
 }

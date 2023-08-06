@@ -1,62 +1,37 @@
-"use client"
 import React from 'react'
-import { useRouter, useParams } from 'next/navigation'
 // components & icons
-import Social from '@/app/components/social'
-import HeaderPage from '@/app/components/headerPage'
-import Projects from '@/app/components/projects/projects'
-import PageContainer from '@/app/components/pageContainer'
-
-interface ProjectsTypes {
-    id: number,
-    name: string,
-    imageName: string,
-    description: string,
-    linkURL: string
-}
+import Social from '@/app/components/ui/social'
+import HeaderPage from '@/app/components/ui/headerPage'
+import PageContainer from '@/app/components/ui/pageContainer'
+import ProjectsSection from '@/app/components/projects/projectsSection'
 
 interface PropsTypes {
-    params: {category: string}
+    params: {
+        category: string
+    }
 }
 
-const ProjectsCategory = ({params}: PropsTypes) => {
-
-    const urlParams = useParams()
-    const router = useRouter()
-
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(e.target.value)
-        router.push(`/projects/${e.target.value}`)
+export const generateMetadata = ({params}: {params: {category: string}}) => {
+    return {
+        title: `${params.category.at(0)?.toUpperCase() +  params.category.slice(1)} Projects`,
+        description: `${params.category} Projects`
     }
-    
+}
+
+// server component
+const ProjectsCategory = ({params}: PropsTypes) => {
     return (
         <PageContainer>
             <HeaderPage title="Projects"/>
             <div className="mt-10 flexx">
                 <div className="flex-1">
-                    <h1 className="text-4xl text-gray-700 font-semibold">My Works</h1>
-                    <p className="w-full md:w-[90%] mt-4 text-gray-500 text-[17px] font-medium leading-[1.8]">
+                    <h1 className="text-4xl dark:text-gray-100 text-gray-700 font-semibold">My Works</h1>
+                    <p className="w-full md:w-[90%] mt-4 dark:text-gray-300 text-gray-500 text-[17px] font-medium leading-[1.8]">
                         Actually, I have many projects especially MERN project, but  I was deployed to free hosting and get expired. At least, you can check my github to see all my projects.
                     </p>
                 </div>
             </div>
-            <div className="mt-10 bg-gray-100 p-3 rounded-lg">
-                <div className="flex-between">
-                    <h2 className="font-medium text-lg text-gray-600 flexx">
-                        <span className="w-2 h-2 rounded-full bg-gray-400 mr-3"></span>
-                        Projects
-                    </h2>
-                    <select value={urlParams.category} onChange={handleChange} className="outline-none px-2 py-1 rounded-lg shadow-sm">
-                        <option value="">All</option>
-                        <option value="javascript">Javascript</option>
-                        <option value="reactjs">ReactJS</option>
-                        <option value="nextjs">NextJS</option>
-                        <option value="typescript">Typescript</option>
-                        <option value="mongodb">Mongodb</option>
-                    </select>
-                </div>
-                <Projects category={params.category}/>
-            </div>
+            <ProjectsSection category={params.category}/>
             <Social/>
         </PageContainer>
     )

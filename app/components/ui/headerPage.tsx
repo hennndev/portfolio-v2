@@ -6,8 +6,8 @@ interface PropsTypes {
 
 const HeaderPage = ({title}: PropsTypes) => {
     return (
-        <div className="flex-between">
-            <h2 className="font-medium text-xl text-gray-600 flexx">
+        <header className="flex-between theme-transition">
+            <h2 className="font-medium text-xl dark:text-gray-100 text-gray-600 flexx">
                 <span className="w-2 h-2 rounded-full bg-gray-400 mr-3"></span>
                 {title}
             </h2>
@@ -15,7 +15,7 @@ const HeaderPage = ({title}: PropsTypes) => {
                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
                 Available
             </p>
-        </div>
+        </header>
     )
 }
 

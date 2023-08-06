@@ -7,7 +7,7 @@ type PropsTypes = {
 
 const PageContainer = ({children}: PropsTypes) => {
     return (
-        <div className="w-full bg-white px-5 py-7 md:px-7 rounded-xl shadow-md">
+        <div className="w-full dark:bg-gray-900 bg-white px-5 py-7 md:px-7 rounded-xl shadow-md theme-transition">
             <Toaster/>
             {children}
         </div>

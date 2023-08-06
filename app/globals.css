@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 200ms;
 }
 
 @layer components {
@@ -25,5 +26,52 @@ body {
   }
   .flex-between {
     @apply flex items-center justify-between
+  }
+
+
+
+  .link-nav {
+    @apply rounded-full p-1 cursor-pointer dark:hover:bg-gray-700 hover:bg-gray-100 transition duration-200 mr-4 relative
+  }
+  .tooltip {
+    @apply group-hover:opacity-100 rounded-full text-xs text-gray-200 transition duration-300 ease-in-out px-2 py-0.5 absolute bg-gray-600
+  }
+
+  
+  
+  .theme-transition {
+    @apply transition duration-200
+  }
+
+
+  .skill {
+    @apply flex-between dark:bg-gray-900 bg-white theme-transition rounded-xl py-2 px-4 shadow-md mb-5
+  }
+  .skill-link {
+    @apply flexx border-none outline-none px-3 py-2 rounded-lg dark:text-gray-200 dark:bg-gray-800 text-gray-600 bg-gray-50 text-sm font-medium hover:transform hover:-translate-x-2 theme-transition
+  }
+  
+  .btn {
+    @apply border-none outline-none dark:bg-gray-100 dark:text-gray-600 bg-gray-600 cursor-pointer text-gray-200 p-2 rounded-md font-semibold text-sm hover:scale-[0.95] theme-transition
+  }
+
+  .social-icon {
+    @apply border-none outline-none rounded-full p-2 cursor-pointer dark:hover:bg-gray-700 hover:bg-gray-300  theme-transition relative
+  }
+  .social-tooltip {
+    @apply absolute bg-gray-600 opacity-0 -left-3 -top-4 group-hover:opacity-100 rounded-full text-xs text-gray-200 transition duration-300 ease-in-out px-2 py-0.5
+  }
+
+
+
+  /* form */
+  .form-control {
+    @apply mb-4 flex flex-col space-y-2
+  }
+  .input-control {
+    @apply w-full outline-none bg-transparent border-2 dark:border-gray-600 border-gray-200 rounded-lg px-4 py-2 dark:text-gray-300 text-gray-700 dark:focus:border-gray-500 focus:border-gray-400 theme-transition
+  }
+  .error-message {
+    @apply dark:text-red-400 text-red-700 text-sm
   }
 }
