@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 // components
 import Social from '@/app/components/ui/social'
